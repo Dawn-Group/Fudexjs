@@ -11,7 +11,7 @@ module.exports = merge(baseConfigs, {
         path: path.resolve(__dirname, '..', 'dist'),
         publicPath: "/dist/",
         libraryTarget: "umd",
-        library: 'fudex',
+        library: 'fudux',
         filename: "index.js"
     },
     performance: {
