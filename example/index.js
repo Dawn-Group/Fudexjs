@@ -1,25 +1,27 @@
-function exampleone() {
-  var count = function (state, action) {
-    if (action.type === 'INCREMENT') {
-      return state ? state + 1 : 1
-    }
-  }
+import React from "react";
+import ReactDOM from "react-dom";
+import { createStore, combineReducers } from '../src/index'
+import { counter, dcounter } from './reducer'
 
-  var reducers = combineReducers({
-    count: count
-  })
+let reducer = combineReducers({
+  counter: counter,
+  dcounter: dcounter
+})
 
-  var store = createStore(reducers)
+let store = createStore(reducer)
 
-  document.querySelector('.button-1')
-    .addEventListener('click', function () {
-      store.dispatch({ type: 'INCREMENT' })
-    })
+const root = document.createElement("div")
+document.body.appendChild(root)
 
-  store.subscribe(function () {
-    var state = store.getState()
-    document.querySelector('.example-1').innerHTML = state.count
-  })
-}
+const render = () => ReactDOM.render(
+  <div>
+    <p>{store.getState() ? store.getState().counter : 0}</p>
+    <button onClick={() => {
+      store.dispatch({ type: 'INCREAMENT' })
+    }}>Increase</button>
+  </div>,
+  root
+)
 
-exampleone()
+render()
+store.subscribe(render)

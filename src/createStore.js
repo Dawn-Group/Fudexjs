@@ -1,7 +1,6 @@
 function createStore(reducer) {
-
-  var state
-  var listeners = []
+  let state
+  let listeners = []
 
   function getState() {
     return state
@@ -39,4 +38,9 @@ function combineReducers(reducers) {
     });
     return next
   }
+}
+
+export {
+  createStore,
+  combineReducers
 }
