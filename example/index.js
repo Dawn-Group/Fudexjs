@@ -23,13 +23,3 @@ function exampleone() {
 }
 
 exampleone()
-
-
-var t1 = `function test(){
-  return 100
-}
-
-console.log(test())`
-
-
-eval(t1)
